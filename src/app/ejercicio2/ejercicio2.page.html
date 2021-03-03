@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>mostrar partidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="floating" color="primary">equipo</ion-label>
+    <ion-select [(ngModel)]="equipo">
+      <ion-select-option *ngFor="let equipo of equipos">{{equipo.equipo}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div *ngIf="equipo!=''">
+    <div *ngFor="let partido of partidos">
+      <ion-card *ngIf="partido.equipoLocal===equipo || partido.equipoVisitante===equipo" (click)="presentAlert(partido)">
+        <ion-grid>
+          <ion-row>
+            <ion-col>{{partido.fecha}}</ion-col>
+            <ion-col>{{partido.equipoLocal}}</ion-col>
+            <ion-col>{{partido.equipoVisitante}}</ion-col>
+        </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+  </div>
+
+</ion-content>

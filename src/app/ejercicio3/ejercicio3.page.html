@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="presentAlert(true)">
+        DISPUTADOS
+      </ion-button>
+      <ion-button color="primary" (click)="presentAlert(false)">
+        NO DISPUTADOS
+      </ion-button>
+    </ion-buttons>     
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngFor="let partido of partidos">
+      <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col>{{partido.fecha}}</ion-col>
+            <ion-col>{{partido.equipoLocal}}</ion-col>
+            <ion-col>{{partido.equipoVisitante}}</ion-col>
+          </ion-row>
+          <ion-row *ngIf="partido.disputado">
+            <ion-col></ion-col>
+            <ion-col>{{partido.golesLocal}}</ion-col>
+            <ion-col>{{partido.golesVisitante}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>subir partidos a firebase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="floating" color="primary">equipo</ion-label>
+    <ion-input [(ngModel)]="equipo"></ion-input>
+  </ion-item>
+  <div *ngIf="equipo!=''">
+    <div *ngFor="let partido of partidos">
+      <ion-card *ngIf="partido.equipoLocal===equipo || partido.equipoVisitante===equipo" (click)="subirPartido(partido)">
+        <ion-grid>
+          <ion-row>
+            <ion-col>{{partido.fecha}}</ion-col>
+            <ion-col>{{partido.equipoLocal}}</ion-col>
+            <ion-col>{{partido.equipoVisitante}}</ion-col>
+          </ion-row>
+          <ion-row *ngIf="partido.disputado">
+            <ion-col></ion-col>
+            <ion-col>{{partido.golesLocal}}</ion-col>
+            <ion-col>{{partido.golesVisitante}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+  </div>
+
+</ion-content>

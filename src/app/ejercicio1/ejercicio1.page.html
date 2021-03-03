@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>     
+    <ion-title>
+      Alta partido
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="form-content">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.value)">
+    
+    <div formGroupName="grupo">
+      <ion-item>
+        <ion-label position="floating" color="primary">fecha</ion-label>
+        <ion-input type="date" formControlName="fecha"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating" color="primary">equipo local</ion-label>
+        <ion-select formControlName="equipoLocal">
+          <ion-select-option *ngFor="let equipo of equipos">{{equipo.equipo}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">equipo local</ion-label>
+        <ion-select formControlName="equipoVisitante">
+          <ion-select-option *ngFor="let equipo of equipos">{{equipo.equipo}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">disputado</ion-label>
+        <ion-checkbox formControlName="disputado" (ionChange)="onChangeDisputado($event)"></ion-checkbox>
+      </ion-item>
+
+      <div *ngIf="formulario.get('grupo').get('disputado').value==true">
+        <ion-item>
+          <ion-label position="floating" color="primary">goles local</ion-label>
+          <ion-input type="number" formControlName="golesLocal"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" color="primary">goles visitante</ion-label>
+          <ion-input type="number" formControlName="golesVisitante"></ion-input>
+        </ion-item>
+      </div>
+
+    </div>  <!-- end div grupo-->
+    <ion-button color="primary" class="submit-btn" expand="block" type="submit" [disabled]="!formulario.valid">Submit data</ion-button>
+  </form>
+</ion-content>
