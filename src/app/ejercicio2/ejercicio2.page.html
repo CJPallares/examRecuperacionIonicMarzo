@@ -8,7 +8,8 @@
 
   <ion-item>
     <ion-label position="floating" color="primary">equipo</ion-label>
-    <ion-select [(ngModel)]="equipo">
+    <ion-select [(ngModel)]="equipo"> <!-- OJO con el [(ngModel)] que es bidireccional data binding, en el controlador esta inicializado a ""
+       y una vez seleccionamos una opción equipo tendrá el valor de ese equipo seleccionado y ya aparecerán sus partidos-->
       <ion-select-option *ngFor="let equipo of equipos">{{equipo.equipo}}</ion-select-option>
     </ion-select>
   </ion-item>

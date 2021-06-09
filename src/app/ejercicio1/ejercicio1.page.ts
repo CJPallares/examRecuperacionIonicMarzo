@@ -114,10 +114,12 @@ export class Ejercicio1Page implements OnInit {
         Validators.required
       ])),
       golesLocal: new FormControl(0, Validators.compose([
-        Validators.required
+        Validators.required,
+        Validators.min(0)
       ])),
       golesVisitante: new FormControl(0, Validators.compose([
-        Validators.required
+        Validators.required,
+        Validators.min(0)
       ]))
     }, (formGroup: FormGroup) => {
       return this.validarGrupo(formGroup);

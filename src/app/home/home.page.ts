@@ -19,11 +19,12 @@ export class HomePage implements OnInit {
   ngOnInit() {
     
   }
-
+// La diferencia entre ionViewWillEnter y ionViewDidEnter es cuando son ejecutadas. El primero se ejecuta justo después de ngOnInit 
+// pero antes de que la transición de la pagina inicie, y este último directamente después de que termina la transición.
   ionViewWillEnter(){ 
     this.partido=null;
     this.activatedRoute.queryParams.subscribe(params => {
-        this.partido = JSON.parse(params['partido']);
+        this.partido = JSON.parse(params['partido']); //coge los datos que le manda la pag ejercicio1
         console.log(this.partido);
     });
   }
